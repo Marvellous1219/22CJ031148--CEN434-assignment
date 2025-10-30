@@ -1,0 +1,254 @@
+Here’s the full updated HTML code for **Marvellous' Tie Shop**, now with product selection checkboxes and a checkout button that displays a summary table of selected items and total price:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvellous' Tie Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            background-color: #f4f4f4;
+            color: #333333;
+        }
+
+        .the-whole-shop {
+            width: 900px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .shop-top-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eeeeee;
+            overflow: hidden;
+        }
+
+        .shop-big-name {
+            font-size: 40px;
+            font-weight: bold;
+            color: #5d2a42;
+            margin-bottom: 10px;
+        }
+
+        .shop-motto {
+            font-style: italic;
+            color: #516446;
+            margin-top: 0px;
+        }
+
+        .where-the-ties-are {
+            overflow: hidden;
+            padding-bottom: 20px;
+        }
+
+        .one-tie-box {
+            width: 240px;
+            float: left;
+            margin-right: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #dddddd;
+            padding: 15px;
+            text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .one-tie-box:nth-child(3n) {
+            margin-right: 0px;
+        }
+
+        .tie-picture-spot {
+            width: 230px;
+            height: 200px;
+            background-color: #e0e0e0;
+            margin: 0px auto 10px auto;
+            display: block;
+            color: #777777;
+            font-style: italic;
+            border-radius: 3px;
+            overflow: hidden;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .tie-picture-spot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tie-name {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #5d2a42;
+        }
+
+        .tie-price {
+            font-size: 18px;
+            color: #d14124;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .bottom-section {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eeeeee;
+            color: #666666;
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        #checkout-summary {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #cccccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="the-whole-shop">
+
+        <div class="shop-top-section">
+            <div class="shop-big-name">
+                <h1>Marvellous' Tie Shop</h1>
+            </div>
+            <p class="shop-motto">Where style meets sophistication.</p>
+        </div>
+
+        <div class="where-the-ties-are">
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie1.jpeg" alt="Classic Silk Tie">
+                </div>
+                <p class="tie-name">Classic Silk Tie</p>
+                <p class="tie-price">N3500.00</p>
+                <input type="checkbox" class="tie-select" data-price="3500" data-name="Classic Silk Tie"> Select
+            </div>
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie5.png" alt="Striped Cotton Tie">
+                </div>
+                <p class="tie-name">Striped Cotton Tie</p>
+                <p class="tie-price">N2850.00</p>
+                <input type="checkbox" class="tie-select" data-price="2850" data-name="Striped Cotton Tie"> Select
+            </div>
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie4.jpeg" alt="Slim Fit Bow Tie">
+                </div>
+                <p class="tie-name">Slim Fit Bow Tie</p>
+                <p class="tie-price">N2200.00</p>
+                <input type="checkbox" class="tie-select" data-price="2200" data-name="Slim Fit Bow Tie"> Select
+            </div>
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie3.jpeg" alt="Glossy Tie">
+                </div>
+                <p class="tie-name">Glossy Tie</p>
+                <p class="tie-price">N4000.00</p>
+                <input type="checkbox" class="tie-select" data-price="4000" data-name="Glossy Tie"> Select
+            </div>
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie2.jpeg" alt="Floral Design Tie">
+                </div>
+                <p class="tie-name">Floral Design Tie</p>
+                <p class="tie-price">N3000.00</p>
+                <input type="checkbox" class="tie-select" data-price="3000" data-name="Floral Design Tie"> Select
+            </div>
+
+            <div class="one-tie-box">
+                <div class="tie-picture-spot">
+                    <img src="tie1.jpeg" alt="Velvet Evening Tie">
+                </div>
+                <p class="tie-name">Velvet Evening Tie</p>
+                <p class="tie-price">N4500.00</p>
+                <input type="checkbox" class="tie-select" data-price="4500" data-name="Velvet Evening Tie"> Select
+            </div>
+        </div>
+
+        <div style="text-align:center; margin-top:20px;">
+            <button onclick="checkout()" style="padding:10px 20px; font-size:16px;">Checkout</button>
+        </div>
+
+        <div id="checkout-summary"></div>
+
+        <div class="bottom-section">
+            <p>&copy; 2025 Marvellous' Tie Shop.</p>
+        </div>
+
+    </div>
+
+    <script>
+        function checkout() {
+            const selectedTies = document.querySelectorAll('.tie-select:checked');
+            let totalItems = selectedTies.length;
+            let totalPrice = 0;
+            let rows = '';
+
+            selectedTies.forEach(tie => {
+                const name = tie.getAttribute('data-name');
+                const price = parseFloat(tie.getAttribute('data-price'));
+                totalPrice += price;
+                rows += `<tr><td>${name}</td><td>N${price.toFixed(2)}</td></tr>`;
+            });
+
+            const summaryHTML = `
+                <h2>Checkout Summary</h2>
+                <table>
+                    <thead>
+                        <tr><th>Item</th><th>Price</th></tr>
+                    </thead>
+                    <tbody>
+                        ${rows}
+                        <tr><td><strong>Total Items</strong></td><td>${totalItems}</td></tr>
+                        <tr><td><strong>Total Price</strong></td><td>N${totalPrice.toFixed(2)}</td></tr>
+                    </tbody>
+                </table>
+            `;
+
+            document.getElementById('checkout-summary').innerHTML = summaryHTML;
+        }
+    </script>
+
+</body>
+</html>
+```
+
+Let me know if you'd like to add cart persistence, payment integration, or a printable receipt next!
