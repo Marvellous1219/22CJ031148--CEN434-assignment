@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,6 +116,7 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         table, th, td {
@@ -131,6 +131,45 @@
         th {
             background-color: #f0f0f0;
         }
+
+        /* New styles for quantity input and add to cart button */
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .quantity-controls input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .add-to-cart-btn {
+            background-color: #516446; /* A pleasant green */
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #405037; /* Darker green on hover */
+        }
+
+        .cart-status {
+            font-size: 18px;
+            font-weight: bold;
+            color: #5d2a42;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -144,6 +183,10 @@
             <p class="shop-motto">Where style meets sophistication.</p>
         </div>
 
+        <div class="cart-status">
+            Your Cart: <span id="cart-item-count">0</span> items
+        </div>
+
         <div class="where-the-ties-are">
 
             <div class="one-tie-box">
@@ -151,8 +194,12 @@
                     <img src="tie1.jpeg" alt="Classic Silk Tie">
                 </div>
                 <p class="tie-name">Classic Silk Tie</p>
-                <p class="tie-price">N3500.00</p>
-                <input type="checkbox" class="tie-select" data-price="3500" data-name="Classic Silk Tie"> Select
+                <p class="tie-price" data-raw-price="3500">N3500.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie1">Qty:</label>
+                    <input type="number" id="qty-tie1" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Classic Silk Tie" data-price="3500">Add to Cart</button>
+                </div>
             </div>
 
             <div class="one-tie-box">
@@ -160,8 +207,12 @@
                     <img src="tie5.png" alt="Striped Cotton Tie">
                 </div>
                 <p class="tie-name">Striped Cotton Tie</p>
-                <p class="tie-price">N2850.00</p>
-                <input type="checkbox" class="tie-select" data-price="2850" data-name="Striped Cotton Tie"> Select
+                <p class="tie-price" data-raw-price="2850">N2850.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie2">Qty:</label>
+                    <input type="number" id="qty-tie2" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Striped Cotton Tie" data-price="2850">Add to Cart</button>
+                </div>
             </div>
 
             <div class="one-tie-box">
@@ -169,8 +220,12 @@
                     <img src="tie4.jpeg" alt="Slim Fit Bow Tie">
                 </div>
                 <p class="tie-name">Slim Fit Bow Tie</p>
-                <p class="tie-price">N2200.00</p>
-                <input type="checkbox" class="tie-select" data-price="2200" data-name="Slim Fit Bow Tie"> Select
+                <p class="tie-price" data-raw-price="2200">N2200.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie3">Qty:</label>
+                    <input type="number" id="qty-tie3" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Slim Fit Bow Tie" data-price="2200">Add to Cart</button>
+                </div>
             </div>
 
             <div class="one-tie-box">
@@ -178,8 +233,12 @@
                     <img src="tie3.jpeg" alt="Glossy Tie">
                 </div>
                 <p class="tie-name">Glossy Tie</p>
-                <p class="tie-price">N4000.00</p>
-                <input type="checkbox" class="tie-select" data-price="4000" data-name="Glossy Tie"> Select
+                <p class="tie-price" data-raw-price="4000">N4000.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie4">Qty:</label>
+                    <input type="number" id="qty-tie4" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Glossy Tie" data-price="4000">Add to Cart</button>
+                </div>
             </div>
 
             <div class="one-tie-box">
@@ -187,8 +246,12 @@
                     <img src="tie2.jpeg" alt="Floral Design Tie">
                 </div>
                 <p class="tie-name">Floral Design Tie</p>
-                <p class="tie-price">N3000.00</p>
-                <input type="checkbox" class="tie-select" data-price="3000" data-name="Floral Design Tie"> Select
+                <p class="tie-price" data-raw-price="3000">N3000.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie5">Qty:</label>
+                    <input type="number" id="qty-tie5" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Floral Design Tie" data-price="3000">Add to Cart</button>
+                </div>
             </div>
 
             <div class="one-tie-box">
@@ -196,13 +259,17 @@
                     <img src="tie1.jpeg" alt="Velvet Evening Tie">
                 </div>
                 <p class="tie-name">Velvet Evening Tie</p>
-                <p class="tie-price">N4500.00</p>
-                <input type="checkbox" class="tie-select" data-price="4500" data-name="Velvet Evening Tie"> Select
+                <p class="tie-price" data-raw-price="4500">N4500.00</p>
+                <div class="quantity-controls">
+                    <label for="qty-tie6">Qty:</label>
+                    <input type="number" id="qty-tie6" value="1" min="1">
+                    <button class="add-to-cart-btn" data-name="Velvet Evening Tie" data-price="4500">Add to Cart</button>
+                </div>
             </div>
         </div>
 
         <div style="text-align:center; margin-top:20px;">
-            <button onclick="checkout()" style="padding:10px 20px; font-size:16px;">Checkout</button>
+            <button onclick="checkout()" style="padding:10px 20px; font-size:16px; background-color: #5d2a42; color: white; border: none; border-radius: 4px; cursor: pointer;">Checkout</button>
         </div>
 
         <div id="checkout-summary"></div>
@@ -214,24 +281,71 @@
     </div>
 
     <script>
+        // A global array to hold the items in our shopping cart
+        let cart = [];
+
+        // Function to update the displayed number of items in the cart
+        function updateCartItemCount() {
+            const cartItemCountElement = document.getElementById('cart-item-count');
+            let totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartItemCountElement.textContent = totalItems;
+        }
+
+        // Function to add a tie to the cart
+        function addToCart(button) {
+            const tieBox = button.closest('.one-tie-box'); // Find the parent tie box
+            const name = button.getAttribute('data-name');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const quantityInput = tieBox.querySelector('input[type="number"]');
+            const quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity < 1) {
+                alert('Please enter a valid quantity for ' + name + '.');
+                return;
+            }
+
+            // Check if the item already exists in the cart
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+
+            if (existingItemIndex > -1) {
+                // Item exists, update its quantity
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // New item, add to cart
+                cart.push({ name, price, quantity });
+            }
+
+            alert(`${quantity} x ${name}(s) added to your cart!`);
+            quantityInput.value = 1; // Reset quantity input after adding to cart
+            updateCartItemCount(); // Update the displayed cart count
+            console.log("Current Cart:", cart); // For debugging, my friend!
+        }
+
+        // The checkout function, now working with our 'cart' array
         function checkout() {
-            const selectedTies = document.querySelectorAll('.tie-select:checked');
-            let totalItems = selectedTies.length;
+            let totalItems = 0;
             let totalPrice = 0;
             let rows = '';
 
-            selectedTies.forEach(tie => {
-                const name = tie.getAttribute('data-name');
-                const price = parseFloat(tie.getAttribute('data-price'));
-                totalPrice += price;
-                rows += `<tr><td>${name}</td><td>N${price.toFixed(2)}</td></tr>`;
+            if (cart.length === 0) {
+                document.getElementById('checkout-summary').innerHTML = `
+                    <h2>Checkout Summary</h2>
+                    <p>Your cart is empty. Please add some magnificent ties!</p>
+                `;
+                return;
+            }
+
+            cart.forEach(item => {
+                totalItems += item.quantity;
+                totalPrice += item.price * item.quantity;
+                rows += `<tr><td>${item.name} (x${item.quantity})</td><td>N${(item.price * item.quantity).toFixed(2)}</td></tr>`;
             });
 
             const summaryHTML = `
                 <h2>Checkout Summary</h2>
                 <table>
                     <thead>
-                        <tr><th>Item</th><th>Price</th></tr>
+                        <tr><th>Item & Quantity</th><th>Subtotal</th></tr>
                     </thead>
                     <tbody>
                         ${rows}
@@ -243,10 +357,16 @@
 
             document.getElementById('checkout-summary').innerHTML = summaryHTML;
         }
+
+        // Attach event listeners to all "Add to Cart" buttons once the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => addToCart(button));
+            });
+            updateCartItemCount(); // Initialize cart count on page load
+        });
     </script>
 
 </body>
 </html>
-```
-
-Let me know if you'd like to add cart persistence, payment integration, or a printable receipt next!
